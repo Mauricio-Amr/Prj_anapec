@@ -15,9 +15,9 @@ module.exports = {
                 fabricante: pecas[i].fabricante,
                 modelo: pecas[i].modelo,
                 linha: pecas[i].linha
-                
             })
         }
+        res.json(json);
     },
 
     buscarUm: async(req,res) =>{
