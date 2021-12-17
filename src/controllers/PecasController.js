@@ -45,18 +45,22 @@ module.exports = {
         let modelo = req.params.modelo;
         let linha = req.params.linha;
             
-        if(pecas){
-            let PecasCodigo = await PecasService.inserir(codigo , nome, fabricante, modelo, linha);
+        if(codigo && nome && fabricante && modelo && linha){
+            let PecasCodigo = await PecasService.inserir(codigo, nome, fabricante, modelo, linha);
             json.result = {
-                codigo: PecasCodigo, nome, fabricante, modelo,linha
+                cod: PecasCodigo,
+                codigo,
+                nome,
+                fabricante,
+                modelo,
+                linha
             };
         }else{
             json.error = 'Campo  não  enviado '
         }
 
-        res.json(json)
-
-
-    }
+        res.json(json);
+        
+    },
 
 }
