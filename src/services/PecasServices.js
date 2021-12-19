@@ -38,7 +38,32 @@ module.exports = {
             
          );
         });
+    },
+
+    alterar: (codigo , nome, fabricante, modelo, linha) => {
+        return new Promise ((aceito , rejeitado)=>{
+
+            db.query('UPDATE pecas_ori SET nome = ?, fabricante = ?, modelo = ?, linha = ? WHERE codigo = ?', 
+            [nome, fabricante, modelo, linha, codigo],
+            (error, results)=>{
+                if(error){rejeitado(error);return;}
+                aceito(results);
+            }
+            
+         );
+        });
+    },
+
+    excluir: (codigo) => { 
+        return new Promise((aceito,rejeitado)=>{
+
+        db.query('DELETE FROM pecas_ori WHERE codigo = ?',[codigo], (error, results)=>{
+            if(error){rejeitado(error); return;}
+            aceito(results);
+        });
+    });
     }
+
 
 
 };

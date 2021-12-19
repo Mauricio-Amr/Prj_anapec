@@ -39,16 +39,16 @@ module.exports = {
 
         let json = { error:'', result:{}};
 
-        let codigo = req.params.codigo;
-        let nome = req.params.nome;
-        let fabricante = req.params.fabricante;
-        let modelo = req.params.modelo;
-        let linha = req.params.linha;
+        let codigo = req.body.codigo;
+        let nome = req.body.nome;
+        let fabricante = req.body.fabricante;
+        let modelo = req.body.modelo;
+        let linha = req.body.linha;
             
         if(codigo && nome && fabricante && modelo && linha){
             let PecasCodigo = await PecasService.inserir(codigo, nome, fabricante, modelo, linha);
             json.result = {
-                cod: PecasCodigo,
+                
                 codigo,
                 nome,
                 fabricante,
@@ -62,5 +62,42 @@ module.exports = {
         res.json(json);
         
     },
+
+    alterar: async(req,res) =>{
+
+        let json = { error:'', result:{}};
+
+        let codigo = req.params.codigo;
+        let nome = req.body.nome;
+        let fabricante = req.body.fabricante;
+        let modelo = req.body.modelo;
+        let linha = req.body.linha;
+            
+        if(codigo && nome && fabricante && modelo && linha){
+            await PecasService.alterar(codigo, nome, fabricante, modelo, linha);
+            json.result = {
+                codigo,
+                nome,
+                fabricante,
+                modelo,
+                linha
+            };
+        }else{
+            json.error = 'Campo  não  enviado '
+        }
+
+        res.json(json);
+        
+    },
+
+    excluir : async(req,res) => {
+
+        let json = {erro:'', result:{}};
+
+        let codigo = req.params.codigo
+        await PecasService.excluir(codigo)
+
+        res.json(json)
+    }
 
 }
