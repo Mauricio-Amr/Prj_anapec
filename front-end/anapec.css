@@ -1,0 +1,78 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+body{
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-rows: 15vh 80vh 5vh ;
+    grid-template-areas: 
+    'cabecalho cabecalho cabecalho'
+    'navegacao sec-conteudo sec-conteudo'
+    'rodape rodape rodape';
+}
+
+header{
+    grid-area: cabecalho;
+    background-color: gray;
+}
+
+nav{
+    grid-area: navegacao;
+    background-color: cadetblue;
+}
+
+section{
+    grid-area: sec-conteudo;
+    background-color: coral;
+
+}
+
+footer{
+    grid-area: rodape;
+    background-color: darkgrey;
+}
+
+
+.vertical-menu{
+    width: 200px;
+}
+
+.vertical-menu a {
+    background-color: lightgrey;
+    color: black;
+    display: block;
+    padding-left: 12px;
+    text-decoration: none;
+
+}
+
+.vertical-menu a:hover{
+    background-color: grey ;
+}
+
+.vertical-menu a:active{
+    background-color: lightgrey;
+    color: white;
+}
+
+form .form-pesq{
+    margin: 0 auto;
+    width: 400px;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+}
+
+.form-pesq div + div{
+    margin-top: 1em;
+}
+
+.lab-pesq{
+    display: inline-block;
+    width: 90px;
+    text-align: right;
+}

@@ -1,7 +1,7 @@
 
 document.querySelectorAll('a').forEach(link => {
     const conteudo = document.getElementById('conteudo')
-    
+
     link.onclick = function(e){
         e.preventDefault()
 

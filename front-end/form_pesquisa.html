@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../front-end/anapec.css">
 </head>
+<script src="../front-end/src/pesquisa.js"></script>
 <body>
-    <H1>PESQUISA</H1>
+    
+    <form class = "form-pesq" method="get">
+        <div>
+            <label class ="lab-pesq">Pecas</label>
+            <input type = "text" name = "peca"/> 
+        </div>
+        <div class= "button-pesquisa"> 
+            <button id = 'enviar' type="button" onclick="return enviar()">
+                Pesquisar</button>
+        </div>
+        <br>
+        <br>
+        <div class="lista-peca">
+            <p id='texto'></p>
+        </div>
+    </form>
+    
     
 </body>
-</html>
