@@ -1,24 +1,20 @@
-<head>
-    <link rel="stylesheet" href="../front-end/anapec.css">
-</head>
-<script src="../front-end/src/pesquisa.js"></script>
-<body>
-    
-    <form class = "form-pesq" method="get">
+    <script src="/front-end/src/pesquisa.js" ></script>
+    <form class="form-pesq" name='pesquisa' action="" >
         <div>
-            <label class ="lab-pesq">Pecas</label>
-            <input type = "text" name = "peca"/> 
+            <label class="lab-pesq">Pecas</label>
+            <input type="text" name='inp-pesquisa' id='fm-pesq'>
         </div>
-        <div class= "button-pesquisa"> 
-            <button id = 'enviar' type="button" onclick="return enviar()">
+        <div class="button-pesquisa">
+            <button name="pesq-sub" type="button" onclick=enviar() >
                 Pesquisar</button>
-        </div>
-        <br>
-        <br>
-        <div class="lista-peca">
-            <p id='texto'></p>
-        </div>
-    </form>
+            </div>
+            <br>
+            <br>
+            <div class="lista-peca" id = "div1" >
+                <p name='paragrafo' id='demo'>atrib</p>
+            </div>
+        </form>
+        
+        
     
-    
-</body>
+
