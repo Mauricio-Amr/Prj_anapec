@@ -2,6 +2,8 @@ const req = require("express/lib/request")
 
 const url = "http://localhost:3000/api/pecas"
 
+const config = { }
+
 const form = new FormData()
 
 
@@ -37,25 +39,22 @@ function getPecas(codigo){
 
  async function addPecas_ori(){   
 
-
-        form.append("codigo" , 'teste001')
-        form.append('nome' , 'pecateste')
-        form.append('fabricante' , 'fabricanteste')
-        form.append('modelo' , 'modeloteste')
-        form.append('linha', 'continuada')
-
+        const itens = new URLSearchParams()
+        itens.append('codigo','teste002')
+        itens.append('nome', 'pecateste')
+        itens.append('fabricante','fabricanteste')
+        itens.append('modelo', 'modeloteste')
+        itens.append('linha', 'continuada')
     
-
-    
-    const url = `http://localhost:3000/api/pecas`
+        const url = `http://localhost:3000/api/pecas`
     
      await axios({
          method : "post",
          url: `${url}`, 
-         data : form,
-         headers: {"Content-Type": "multipart/form-data"}, })
+         data : itens,
+         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }})
     .then(response =>{
-        alert(response.error)
+        alert(response.status)
     })
     .catch(error => console.log(error))   
 
