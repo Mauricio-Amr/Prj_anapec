@@ -3,6 +3,7 @@ const PecasService = require('../services/PecasServices');
 
 module.exports = { 
     buscarTodas : async(req, res) =>{
+        res.header("Access-Control-Allow-Origin", "*");
         let json = {error:'', result:[]};
 
         let pecas = await PecasService.buscarTodas();
@@ -56,7 +57,7 @@ module.exports = {
                 linha
             };
         }else{
-            json.error = 'Campo  não  enviado '
+            json.error = `Campo  não  enviado ${codigo}`
         }
 
         res.json(json);

@@ -8,5 +8,30 @@
 </head>
 <body>
     <h1>CADASTRO</h1>
+
+<form class="form-cad" name="frm-cadastro" action="">
+    <div>
+        <label for="">Codigo</label>
+        <input type="text" name = "inp-codigo" id ='fm-inp-codigo'>
+        <br><br>
+        <label for="">Nome</label>
+        <input type="text" name = "inp-nome" id ='fm-inp-nome'>
+        <br><br> 
+        <label for="">Fabricante</label>
+        <input type="text" name = "inp-fabricante" id ='fm-inp-fabricante'>
+        <br><br>
+        <label for="">Modelo</label>
+        <input type="text" name = "inp-modelo" id ='fm-inp-codigo'>
+        <br><br>
+        <label for="">Linha</label>
+        <input type="radio" name = "in-codigo" id ='fm-inp-linha' value ="continuada" >
+        <input type="radio" name = "in-codigo" id ='fm-inp-linha' value = "descontinuada">
+        <br><br>
+        <button  name = "cad-frm" type="button" onclick=addPecas_ori()>
+            CADASTRAR</button>
+    </div>
+
+</form>
+
 </body>
 </html>
