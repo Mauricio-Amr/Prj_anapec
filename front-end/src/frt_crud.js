@@ -5,31 +5,74 @@ const url = "http://localhost:3000/api/pecas"
 const form = new FormData()
 
 
-function enviar(e) {
+function enviar() {
         
         const valor = document.getElementById('fm-pesq').value
-        getPecas(valor)
-
-        const body = document.querySelector('body')
-        const div = document.querySelector('div')
-        const paragrafo = document.createElement('p')
-        paragrafo.innerHTML = getPecas()
-        const lspeca = document.getElementById('lspeca')
-
-        div1.appendChild(paragrafo)
+        result = getPecas(valor)
+        onload (result)
 }
 
-function getPecas(codigo){
+async function  getPecas(codigo){
+
+    let table = document.createElement('table');
+    let thead = document.createElement('thead');
+    let tbody = document.createElement('tbody');
+    
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    
+    // Adding the entire table to the body tag
+    document.getElementById('lspeca').appendChild(table);
+
+    // Creating and adding data to first row of the table
+    let row_1 = document.createElement('tr');
+    let heading_1 = document.createElement('th');
+    heading_1.innerHTML = "CODIGO";
+    let heading_2 = document.createElement('th');
+    heading_2.innerHTML = "NOME"; 
+
+    row_1.appendChild(heading_1);
+    row_1.appendChild(heading_2);
+    thead.appendChild(row_1);
+    
 
     if(codigo){
     const url = `http://localhost:3000/api/pecas/${codigo}`
 
-    axios.get(url)
+    return await axios.get(url)
     .then(response =>{
-        const data = response.data
-        lspeca.textContent = JSON.stringify(data)
+        
+        console.log(response)
+
+        let data = response.data
+         
+        console.log(data)
+
+
+        for(let k in data){
+            console.log(k)
+            let valor = data[k]
+            let codigo = valor.codigo
+            let nome = valor.nome
+            console.log(codigo , nome)
+            console.log(data)
+
+            let row_2 = document.createElement('tr');
+            let row_2_data_1 = document.createElement('td');
+            row_2_data_1.innerHTML = codigo;
+            let row_2_data_2 = document.createElement('td');
+            row_2_data_2.innerHTML = nome;
+
+            row_2.appendChild(row_2_data_1);
+            row_2.appendChild(row_2_data_2);
+            tbody.appendChild(row_2);
+
+
+        }
+        
     })
-    .catch(error => console.log(error));}
+
+    .catch(error => console.log(error));
     
 }
 
@@ -45,7 +88,11 @@ function getPecas(codigo){
         form.append('linha', 'continuada')
 
     
-
+    const config ={
+        headers:{
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }
     
     const url = `http://localhost:3000/api/pecas`
     
@@ -74,4 +121,4 @@ function attPecas_comp(){
 }
 
 
-
+}
