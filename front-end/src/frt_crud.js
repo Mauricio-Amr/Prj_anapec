@@ -1,3 +1,4 @@
+const { json } = require("body-parser")
 const req = require("express/lib/request")
 
 const url = "http://localhost:3000/api/pecas"
@@ -10,8 +11,8 @@ const form = new FormData()
 function enviar() {
         
         const valor = document.getElementById('fm-pesq').value
-        result = getPecas(valor)
-        onload (result)
+        getPecas(valor)
+        
 }
 
 async function  getPecas(codigo){
@@ -44,21 +45,17 @@ async function  getPecas(codigo){
     return await axios.get(url)
     .then(response =>{
         
-        console.log(response)
-
-        let data = response.data
+        
+        let data =  response.data.result
          
         console.log(data)
 
-
-        for(let k in data){
-            console.log(k)
-            let valor = data[k]
-            let codigo = valor.codigo
-            let nome = valor.nome
-            console.log(codigo , nome)
-            console.log(data)
-
+       // for(let k in data){
+           // let valor =  data[k]
+           // console.log(valor)
+            let codigo = data.codigo
+            let nome = data.nome
+            
             let row_2 = document.createElement('tr');
             let row_2_data_1 = document.createElement('td');
             row_2_data_1.innerHTML = codigo;
@@ -70,7 +67,7 @@ async function  getPecas(codigo){
             tbody.appendChild(row_2);
 
 
-        }
+        //}
         
     })
 
