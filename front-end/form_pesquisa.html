@@ -1,33 +1,28 @@
-   <!DOCTYPE html>
-   <html lang="en">
-   <head>
-       <meta charset="UTF-8">
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       
-       <title>PESQUISA</title>  
-   </head>
-   <body>
-       <form class="form-pesq" name='pesquisa' action="" >
-        <div>
-            <label class="lab-pesq">Pecas</label>
-            <input type="text" name='inp-pesquisa' id='fm-pesq'>
-        </div>
-        <div class="button-pesquisa">
-            <button name="pesq-sub" type="button" onclick=enviar() >
-                Pesquisar</button>
-            </div>
-            <br>
-            <br>
-            <div class="lista-peca" id='lspeca' >
-               
-            </div>
-        </form>
-   </body>
-  
-   </html> 
-    
-        
-        
-      
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PESQUISA</title>
+</head>
+
+<body>
+    <form class="form-pesq" name='pesquisa' action="">
+        <div id='fm-pesq'>
+            <img src="/front-end/img/search-26252-32x32.ico" alt="Busca ..."/>
+            <input type="text" name='inp-pesquisa' id='fm-pesq-imp'>
+            <button name="pesq-sub" id='btn-fpesq-pesq' type="button" onclick=enviar()>
+                Buscar</button>
+        </div>
+        <br>
+        <br>
+        <div class="lista-peca" id='lspeca'>
+
+        </div>
+    </form>
+</body>
+
+</html>

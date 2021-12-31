@@ -1,0 +1,88 @@
+#lspeca
+{
+    position: relative;
+    left: 37%;
+    top: 29%;
+    width: 320px;
+    height: 270px;
+
+}
+
+#fm-pesq
+{
+    display: flex;
+    justify-content: center;
+    background-color: #E0EEEE;
+    border: solid 2px #5f9ea0;
+    border-radius: 10px;
+    width: 300px;
+    height: 32px;
+    position: absolute;
+    align-items:center;
+    
+}
+
+#fm-pesq-imp
+{
+float: left;
+background-color: transparent;
+padding-left: 5px;
+font-size: 18px;
+border: none;
+height: 32px;
+width: 192px;
+}
+
+#btn-fpesq-pesq
+{
+    border: none;
+    float: left;
+    height: 32px;
+    border-radius: 0 7px 7px 0;
+    width: 70px;
+    font-weight: bold;
+    background: #5f9ea0;
+    
+}
+
+#fm-pesq img{
+float: left;
+}
+
+
+table
+{
+    border-spacing: 1;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    margin:0 auto;
+    position: relative;
+}
+
+* {
+    position: relative;
+    
+}
+
+td, th{
+    padding-left: 8px;
+
+}
+
+thead tr
+{
+    height: 60px;
+    background: #ffed86;
+    font-size: 16px;
+}
+
+
+tbody tr
+{
+    height: 48px;
+    border-bottom: 1px solid #e3f1d5;
+}
