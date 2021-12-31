@@ -15,10 +15,13 @@ module.exports = {
     buscarUm: (codigo) =>{
         return new Promise((aceito, rejeitado)=>{
             
-            db.query('SELECT * FROM pecas_ori WHERE codigo = ?',[codigo],(error, results)=>{
+            db.query(
+            'SELECT * FROM pecas_ori po \
+            JOIN compativel cp ON po.codigo = cp.cod_pc_ori \
+            JOIN pecas_comp pc ON cp.cod_pc_comp = pc.codigo WHERE po.codigo = ?',[codigo],(error, results)=>{
                 if (error){rejeitado(error); return;}
                 if (results.length > 0){
-                    aceito(results[0])
+                    aceito(results)//removi o  indice da frente do  result [0]
                 }else {
                     aceito(false)
                 }
