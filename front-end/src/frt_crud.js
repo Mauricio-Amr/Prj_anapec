@@ -95,6 +95,10 @@ async function getPecas(codigo) {
 
 
 async function addPecas_ori() {
+    
+
+
+
 
     const itens = new URLSearchParams()
     itens.append('codigo', 'teste002')
@@ -114,7 +118,7 @@ async function addPecas_ori() {
         .then(response => {
             alert(response.status)
         })
-        .catch(error => console.log(error))
+        .catch(error => alert(error))
 
 }
 

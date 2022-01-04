@@ -11,15 +11,20 @@
 
 <body>
     <form class="form-pesq" name='pesquisa' action="">
-        <div id='fm-pesq'>
-            <img src="/front-end/img/search-26252-32x32.ico" alt="Busca ..."/>
-            <input type="text" name='inp-pesquisa' id='fm-pesq-imp'>
-            <button name="pesq-sub" id='btn-fpesq-pesq' type="button" onclick=enviar()>
-                Buscar</button>
+        <div id=cont-pesq>
+            <div id='fm-pesq'>
+                <img src="/front-end/img/search-26252-32x32.ico" alt="Busca ..." />
+                <input type="text" name='inp-pesquisa' id='fm-pesq-imp'>
+                <button name="pesq-sub" id='btn-fpesq-pesq' type="button" onclick=enviar()>
+                    Buscar</button>
+            </div>
         </div>
         <br>
         <br>
-        <div class="lista-peca" id='lspeca'>
+        <div id="cont-lspeca">
+            <div class="lista-peca" id='lspeca'>
+
+            </div>
 
         </div>
     </form>

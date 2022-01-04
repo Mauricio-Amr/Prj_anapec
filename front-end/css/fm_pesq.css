@@ -1,17 +1,27 @@
 #lspeca
 {
-    position: relative;
-    left: 37%;
+    display: flex;
+    position:relative;
+    align-items: center;
+    justify-content: center;
+    left: 39%;
     top: 29%;
     width: 320px;
     height: 270px;
+}
+
+#cont-pesq{
+    display: flex;
+    justify-content: center;
 
 }
 
+
+
+
 #fm-pesq
 {
-    display: flex;
-    justify-content: center;
+  
     background-color: #E0EEEE;
     border: solid 2px #5f9ea0;
     border-radius: 10px;
@@ -36,7 +46,7 @@ width: 192px;
 #btn-fpesq-pesq
 {
     border: none;
-    float: left;
+    float:left;
     height: 32px;
     border-radius: 0 7px 7px 0;
     width: 70px;
@@ -50,8 +60,16 @@ float: left;
 }
 
 
+
+#cont-lspeca{
+    display: flex;
+    
+    justify-items: center;
+}
+
 table
 {
+    justify-content: center;
     border-spacing: 1;
     border-collapse: collapse;
     background: white;
