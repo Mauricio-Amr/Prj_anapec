@@ -22,6 +22,7 @@ module.exports = {
     },
 
     buscarUm: async(req,res) =>{
+        res.header("Access-Control-Allow-Origin", "*");
         let json = { error:'', result:{}};
 
         let codigo = req.params.codigo;
@@ -97,6 +98,22 @@ module.exports = {
 
         let codigo = req.params.codigo
         await PecasService.excluir(codigo)
+
+        res.json(json)
+    },
+
+    verificar : async(req,res) => {
+
+        let json = {error: '', result:{}};
+        let codigo = req.params.codigo
+       
+
+        let pecas = await PecasService.verificar(codigo);
+        
+        if(pecas){
+            json.result = pecas
+
+        }
 
         res.json(json)
     }

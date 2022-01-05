@@ -1,5 +1,6 @@
 const { json } = require("body-parser")
 const req = require("express/lib/request")
+const { verificar } = require("../../src/services/PecasServices")
 
 const url = "http://localhost:3000/api/pecas"
 
@@ -32,10 +33,10 @@ async function getPecas(codigo) {
     tabela.appendChild(thead);
     tabela.appendChild(tbody);
 
-   //adicionando a tabela a div
+    //adicionando a tabela a div
     document.getElementById('lspeca').appendChild(tabela);
 
-    
+
     //Criando e adicionando o  cabeçalho da tabela
     let linha_1 = document.createElement('tr');
     let coluna_1 = document.createElement('th');
@@ -43,7 +44,7 @@ async function getPecas(codigo) {
     let coluna_2 = document.createElement('th');
     coluna_2.innerHTML = "NOME";
     let coluna_3 = document.createElement('th')
-    coluna_3.innerHTML ="MODELO"
+    coluna_3.innerHTML = "MODELO"
 
 
     linha_1.appendChild(coluna_1);
@@ -69,7 +70,7 @@ async function getPecas(codigo) {
                 //adiciona o resultado ao  corpo da tabela
                 let codigo_comp = data[i].codigo
                 let nome = data[i].nome
-                let modelo =data[i].modelo
+                let modelo = data[i].modelo
 
                 let linha_2 = document.createElement('tr');
                 let linha_2_data_1 = document.createElement('td');
@@ -85,7 +86,7 @@ async function getPecas(codigo) {
                 tbody.appendChild(linha_2);
             }
         }
-            
+
         )
 
         .catch(error => console.log(error));
@@ -94,33 +95,68 @@ async function getPecas(codigo) {
 
 
 
+
+
 async function addPecas_ori() {
-    
 
+    codigo_pc_ori = document.getElementById('fm-inp-codigo').value
+    nome_pc_ori = document.getElementById('fm-inp-nome').value
+    fabricante_pc_ori = document.getElementById('fm-inp-fabricante').value
+    modelo_pc_ori = document.getElementById('fm-inp-modelo').value
+    linha_pc_ori = document.getElementById('fm-inp-linha').value
 
-
+    console.log(codigo_pc_ori)
 
     const itens = new URLSearchParams()
-    itens.append('codigo', 'teste002')
-    itens.append('nome', 'pecateste')
-    itens.append('fabricante', 'fabricanteste')
-    itens.append('modelo', 'modeloteste')
-    itens.append('linha', 'continuada')
+    itens.append('codigo', `${codigo_pc_ori}`)
+    itens.append('nome', `${nome_pc_ori}`)
+    itens.append('fabricante', `${fabricante_pc_ori}`)
+    itens.append('modelo', `${modelo_pc_ori}`)
+    itens.append('linha', `${linha_pc_ori}`)
 
+    console.log(itens)
     const url = `http://localhost:3000/api/pecas`
 
-    await axios({
-        method: "post",
-        url: `${url}`,
-        data: itens,
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    })
-        .then(response => {
-            alert(response.status)
-        })
-        .catch(error => alert(error))
 
+    const verificado = await verifCad(`${codigo_pc_ori}`)
+        console.log(verificado.codigo)
+
+
+    if (codigo_pc_ori == verificado.codigo) {
+        alert(`${codigo_pc_ori} : codgo ja cadastrado`)
+    }
+    else {
+        await axios({
+            method: "post",
+            url: `${url}`,
+            data: itens,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+            .then(response => {
+                alert(response.status)
+            })
+            .catch(error => alert(error))
+    }
 }
+
+
+ async function verifCad(codigoDaPeca) {
+    const url = `http://localhost:3000/api/pecas/verificar/${codigoDaPeca}`
+
+     return await axios.get(url)
+        .then(response => {
+
+            let data = response.data.result
+            return data
+
+        }
+        )
+
+        .catch(error => console.log(error));
+        
+}
+
+
 
 function addPecas_comp() {
 

@@ -65,6 +65,17 @@ module.exports = {
             aceito(results);
         });
     });
+    },
+
+    verificar: (codigo) => {
+        return new Promise((aceito, rejeitado) => {
+
+            db.query('SELECT * FROM pecas_ori WHERE codigo = ? ',[codigo] , (error, results)=>{
+              if(error){rejeitado(error); return;}
+              aceito(results[0])  
+            })
+
+        })
     }
 
 

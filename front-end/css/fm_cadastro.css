@@ -45,7 +45,7 @@
 .card-content-area{
     display: flex;
     flex-direction:column;
-    width: 580px;
+    width:680px;
     padding: 10px 0;
 }
 .card-content-area input{
