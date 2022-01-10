@@ -116,6 +116,80 @@ module.exports = {
         }
 
         res.json(json)
-    }
+    },
+
+    inserirCompativel : async(req, res) => {
+
+        res.header("Access-Control-Allow-Origin", "*");
+
+        //codigo_ori, codigo_comp , nome, fabricante, modelo, observacao
+        let json = {error :'', result: {}};
+
+        let codigo  = req.body.codigo;
+        let nome  = req.body.nome;
+        let fabricante = req.body.fabricante;
+        let modelo = req.body.modelo;
+        let observacao = req.body.observacao;
+
+        if(codigo && nome && fabricante && modelo && observacao){
+            let PecasCodigoComp = await PecasService.inserirCompativel(codigo, nome, fabricante, modelo, observacao);
+            json.result = {
+                
+                codigo,
+                nome,
+                fabricante,
+                modelo,
+                observacao
+            };
+        }else{
+            json.error = `Campo  não  enviado ${codigo}`
+        }
+
+        res.json(json);
+        
+
+    },
+
+    inserirCompatibilidade: async(req, res) =>{
+        let json = {erro:'', result: {}}
+
+
+        //   codigo_ori, codigo_comp
+
+        let cod_pc_ori = req.body.cod_pc_ori;
+        let cod_pc_comp  = req.body.cod_pc_comp;
+        
+
+        if(cod_pc_ori && cod_pc_comp){
+            let PecasCodigoCompatibilidade = await PecasService.inserirCompatibilidade(id,cod_pc_ori,cod_pc_comp);
+            json.result = {
+                id,
+                cod_pc_ori,
+                cod_pc_comp,
+                
+            };
+        }else{
+            json.error = `Campo  não  enviado ${codigo}`
+        }
+
+        res.json(json);
+
+    },
+
+    verificarPecasComp : async(req,res) => {
+
+        let json = {error: '', result:{}};
+        let codigo = req.params.codigo
+       
+
+        let pecas = await PecasService.verificarPecasComp(codigo);
+        
+        if(pecas){
+            json.result = pecas
+
+        }
+
+        res.json(json)
+    },
 
 }

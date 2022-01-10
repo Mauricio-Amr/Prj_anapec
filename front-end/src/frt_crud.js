@@ -1,6 +1,6 @@
-const { json } = require("body-parser")
-const req = require("express/lib/request")
-const { verificar } = require("../../src/services/PecasServices")
+//const { json } = require("body-parser")
+//const req = require("express/lib/request")
+//const { verificar } = require("../../src/services/PecasServices")
 
 const url = "http://localhost:3000/api/pecas"
 
@@ -26,8 +26,11 @@ async function getPecas(codigo) {
     //Criando a tabela de resultado  da pesquuisa
     let tabela = document.createElement('table')
     tabela.setAttribute('id', 'tab-res-pes');
+    tabela.setAttribute('class', 'table')
 
     let thead = document.createElement('thead');
+    thead.setAttribute('class','thead-dark')
+
     let tbody = document.createElement('tbody');
 
     tabela.appendChild(thead);
@@ -158,9 +161,130 @@ async function addPecas_ori() {
 
 
 
-function addPecas_comp() {
+async function addPecas_comp() {
+/*verificar se peça ja esta cadastrada se não estiver cadastrar */
+inserirCompatibilidade()
+/*verificar se peça ja esta cadastrada se sim cadastrar compatibilidade */
+
+
 
 }
+
+
+async function inserirCompativel() {
+    
+    codigo_pc_ori = document.getElementById('fm-inp-codigo-ori').value
+    codigo_pc_comp = document.getElementById('fm-inp-codigo-comp').value
+    nome_pc_comp = document.getElementById('fm-inp-nome-comp').value
+    fabricante_pc_comp = document.getElementById('fm-inp-fabricante-comp').value
+    modelo_pc_comp = document.getElementById('fm-inp-modelo-comp').value
+    observacao_pc_comp = document.getElementById('fm-inp-obsevacao-comp').value
+
+
+    console.log("codigo comp : ", codigo_pc_comp)
+
+    const url = `http://localhost:3000/api/pecas/compativel`
+
+
+    //********************************************/
+    //verificar se peça compativel esta cadastrada 
+    const verificadoComp = await verifCadCompativel(codigo_pc_comp)
+    let resultado = codigo_pc_comp == verificadoComp.codigo
+    console.log("vericando comp : ",verificadoComp)
+
+    if(!resultado){
+        
+        //enviar peça compativel
+        
+        const itensComp= new URLSearchParams()
+        itensComp.append('codigo', `${codigo_pc_comp}`)
+        itensComp.append('nome', `${nome_pc_comp}`)
+        itensComp.append('fabricante', `${fabricante_pc_comp}`)
+        itensComp.append('modelo', `${modelo_pc_comp}`)
+        itensComp.append('observacao', `${observacao_pc_comp}`)
+    
+        await axios({
+            method: "post",
+            url: `${url}`,
+            data: itensComp,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+            .then(response => {
+                alert(response.status)
+            })
+            .catch(error => alert(error))
+
+            
+
+
+    }else{
+        
+        alert("peça cadastrada")
+
+    }
+
+}
+
+async function inserirCompatibilidade() {
+    codigo_pc_ori = document.getElementById('fm-inp-codigo-ori').value
+    codigo_pc_comp = document.getElementById('fm-inp-codigo-comp').value
+
+
+    const verificadoComp = await verifCadCompativel(codigo_pc_comp)
+    console.log("vericando comp : ",verificadoComp)
+
+    if(codigo_pc_comp == verificadoComp.codigo){
+
+        console.log('cadastrando compatibilidade')
+        
+        //enviar dados de compatibilidade
+
+        const url_compatibilidade = `http://localhost:3000/api/pecas/compatibilidade`
+
+        const itens_compatibilidade = new URLSearchParams()
+        itens_compatibilidade.append('cod_pc_comp', `${codigo_pc_comp}`)
+        itens_compatibilidade.append('cod_pc_ori', `${codigo_pc_ori}`)
+
+         //cadastra compatibilidade
+
+        await axios({
+            method: "post",
+            url: `${url_compatibilidade}`,
+            data: itens_compatibilidade,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+            .then(response => {
+                alert(response.status)
+            })
+            .catch(error => alert(error))
+        
+
+    }else{
+        alert('peça não cadstrada')
+    }
+    
+}
+
+async function verifCadCompativel(codigoDaPeca) {
+    const url = `http://localhost:3000/api/pecas/verificarcompativel/${codigoDaPeca}`
+
+     return await axios.get(url)
+        .then(response => {
+
+            let data = response.data.result
+            return data
+
+        }
+        )
+
+        .catch(error => console.log(error));
+        
+}
+
+
+
+
+
 
 function attPecas_ori() {
 
