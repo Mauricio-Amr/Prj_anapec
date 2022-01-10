@@ -163,7 +163,29 @@ async function addPecas_ori() {
 
 async function addPecas_comp() {
 /*verificar se peça ja esta cadastrada se não estiver cadastrar */
-inserirCompatibilidade()
+
+codigo_pc_comp = document.getElementById('fm-inp-codigo-comp').value
+resultadoVericadoComp = await verifCadCompativel(codigo_pc_comp)
+resultado = codigo_pc_comp == resultadoVericadoComp.codigo 
+
+if(!resultado){
+
+    inserirCompativel()
+
+    console.log('cadastrando compativel')
+
+    resultadoVericadoComp2 = await verifCadCompativel(codigo_pc_comp)
+    novoresultado = codigo_pc_comp == resultadoVericadoComp2.codigo 
+    console.log('novo resultado :',novoresultado)
+    if(novoresultado){
+        console.log(`cadastrando compatibilidade ${novoresultado} `)
+        inserirCompatibilidade()
+
+    }
+}else{
+    inserirCompatibilidade()
+}
+
 /*verificar se peça ja esta cadastrada se sim cadastrar compatibilidade */
 
 
@@ -180,22 +202,8 @@ async function inserirCompativel() {
     modelo_pc_comp = document.getElementById('fm-inp-modelo-comp').value
     observacao_pc_comp = document.getElementById('fm-inp-obsevacao-comp').value
 
-
-    console.log("codigo comp : ", codigo_pc_comp)
-
     const url = `http://localhost:3000/api/pecas/compativel`
 
-
-    //********************************************/
-    //verificar se peça compativel esta cadastrada 
-    const verificadoComp = await verifCadCompativel(codigo_pc_comp)
-    let resultado = codigo_pc_comp == verificadoComp.codigo
-    console.log("vericando comp : ",verificadoComp)
-
-    if(!resultado){
-        
-        //enviar peça compativel
-        
         const itensComp= new URLSearchParams()
         itensComp.append('codigo', `${codigo_pc_comp}`)
         itensComp.append('nome', `${nome_pc_comp}`)
@@ -217,23 +225,12 @@ async function inserirCompativel() {
             
 
 
-    }else{
-        
-        alert("peça cadastrada")
-
-    }
 
 }
 
 async function inserirCompatibilidade() {
     codigo_pc_ori = document.getElementById('fm-inp-codigo-ori').value
     codigo_pc_comp = document.getElementById('fm-inp-codigo-comp').value
-
-
-    const verificadoComp = await verifCadCompativel(codigo_pc_comp)
-    console.log("vericando comp : ",verificadoComp)
-
-    if(codigo_pc_comp == verificadoComp.codigo){
 
         console.log('cadastrando compatibilidade')
         
@@ -259,9 +256,7 @@ async function inserirCompatibilidade() {
             .catch(error => alert(error))
         
 
-    }else{
-        alert('peça não cadstrada')
-    }
+
     
 }
 

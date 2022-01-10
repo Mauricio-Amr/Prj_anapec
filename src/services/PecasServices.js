@@ -117,7 +117,7 @@ module.exports = {
     inserirCompatibilidade: (cod_pc_ori, cod_pc_comp) => {
         return new Promise((aceito, rejeitado) => {
 
-            db.query('INSERT INTO compativel  (id,cod_pc_ori, cod_pc_comp) values (default,?,?)',
+            db.query('INSERT INTO compativel (cod_pc_ori, cod_pc_comp) values (?,?)',
                 [cod_pc_ori, cod_pc_comp],
                 (error, results) => {
                     if (error) {

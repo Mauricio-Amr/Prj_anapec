@@ -151,19 +151,22 @@ module.exports = {
     },
 
     inserirCompatibilidade: async(req, res) =>{
+
+        res.header("Access-Control-Allow-Origin", "*");
+
         let json = {erro:'', result: {}}
 
 
         //   codigo_ori, codigo_comp
-
+        
         let cod_pc_ori = req.body.cod_pc_ori;
         let cod_pc_comp  = req.body.cod_pc_comp;
         
 
         if(cod_pc_ori && cod_pc_comp){
-            let PecasCodigoCompatibilidade = await PecasService.inserirCompatibilidade(id,cod_pc_ori,cod_pc_comp);
+            let PecasCodigoCompatibilidade = await PecasService.inserirCompatibilidade(cod_pc_ori,cod_pc_comp);
             json.result = {
-                id,
+                
                 cod_pc_ori,
                 cod_pc_comp,
                 
