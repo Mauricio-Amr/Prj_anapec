@@ -12,7 +12,7 @@ server.use(bodyParser.urlencoded({extended: false}));
 server.use('/api',routes)
 
 server.get('/', function (req,res) {
-    res.sendFile('/app/index.html')
+    res.render('/app/index.html')
     
 })
 
