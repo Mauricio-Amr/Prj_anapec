@@ -8,18 +8,14 @@ const routes = require('./routes')
 const server = express();
 server.use(cors());
 server.use(bodyParser.urlencoded({extended: false}));
-
-
-server.use(/app/front-end/src/navegacao.js)
+server.set('view engine', 'ejs')
 
 server.use('/api',routes)
 
-server.get('/', function (req,res) {
-    res.sendFile('/app/index.html')
-     
+server.use('/', function(req, res, next){
+    res.render('index')
+    next()
 })
-
-
 
 
 
