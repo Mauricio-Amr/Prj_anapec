@@ -9,15 +9,8 @@ const server = express();
 server.use(cors());
 server.use(bodyParser.urlencoded({extended: false}));
 
-server.use(function (req,res) {
-    res.sendFile('/app/front-end/src/navegacao.js')
-    
-})
 
-server.use(function (req,res) {
-    res.sendFile('/app/front-end/src/frt_crud.js')  
-
-})
+server.use('/app/front-end/src',express.static('/app/front-end/src'))
 
 server.use('/api',routes)
 
