@@ -13,9 +13,11 @@ server.use('/api',routes)
 
 server.get('/', function (req,res) {
     res.sendFile('/app/index.html')
-    res.sendFile('/app/front-end/src/frt_crud.js')
+     
+})
 
-    
+server.get(function (req,res) {
+    res.sendFile('/app/front-end/src/frt_crud.js')   
 })
 
 
