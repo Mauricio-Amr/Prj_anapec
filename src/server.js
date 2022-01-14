@@ -10,7 +10,7 @@ server.use(cors());
 server.use(bodyParser.urlencoded({extended: false}));
 
 
-server.use(express.static('/app/front-end/src'))
+server.use('/app/front-end/src/navegacao.js')
 
 server.use('/api',routes)
 
