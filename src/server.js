@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const routes = require('./routes')
-const index =require('index.html')
+const index = 'index.html'
 
 const server = express();
 server.use(cors());
