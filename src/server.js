@@ -8,6 +8,7 @@ const routes = require('./routes')
 const server = express();
 server.use(cors());
 server.use(bodyParser.urlencoded({extended: false}));
+server.use(express.static("/app/front-end/src"))
 server.set('view engine', 'ejs')
 
 server.use('/api',routes)
