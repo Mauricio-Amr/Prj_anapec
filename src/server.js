@@ -17,9 +17,11 @@ server.get('/', function (req,res) {
 })
 
 server.use(function (req,res) {
-    res.sendFile('/app/front-end/src/frt_crud.js')   
+    res.sendFile('/app/front-end/src/frt_crud.js')  
+
 })
 
+server.use('/app/front-end/src/navegacao.js')
 
 server.listen(process.env.PORT, ()=>{
     console.log(`Servidor rodando em : http:localhost:${process.env.PORT}`)
