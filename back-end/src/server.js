@@ -10,7 +10,7 @@ server.use(cors());
 server.use(bodyParser.urlencoded({extended: false}));
 server.use(express.static("./front-end/public"))
 server.set('view engine', 'ejs')
-server.set('views', './front-end/')
+server.set('views', '/front-end/')
 
 server.use('/api',routes)
 
