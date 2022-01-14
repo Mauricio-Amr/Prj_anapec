@@ -16,7 +16,7 @@ server.get('/', function (req,res) {
      
 })
 
-server.get(function (req,res) {
+server.use(function (req,res) {
     res.sendFile('/app/front-end/src/frt_crud.js')   
 })
 
