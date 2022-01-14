@@ -13,7 +13,7 @@ server.set('view engine', 'ejs')
 server.use('/api',routes)
 
 server.use('/', function(req, res, next){
-    res.render('index')
+    res.render('app/index')
     next()
 })
 
