@@ -18,8 +18,6 @@ server.use('/', function(req, res, next){
     next()
 })
 
-
-
 server.listen(process.env.PORT, ()=>{
     console.log(`Servidor rodando em : http:localhost:${process.env.PORT}`)
 })
