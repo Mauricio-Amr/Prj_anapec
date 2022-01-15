@@ -1,4 +1,7 @@
-
+configCors =  {
+	headers: {
+	  'Access-Control-Allow-Origin': '*',
+	}}
 
 const url = "https://anapec.herokuapp.com/api/pecas"
 
@@ -57,7 +60,7 @@ async function getPecas(codigo) {
 
     const url = `https://anapec.herokuapp.com/api/pecas/${codigo}`
 
-    return await axios.get(url)
+    return await axios.get(url, configCors)
         .then(response => {
 
 
@@ -144,7 +147,7 @@ async function addPecas_ori() {
  async function verifCad(codigoDaPeca) {
     const url = `https://anapec.herokuapp.com/api/pecas/verificar/${codigoDaPeca}`
 
-     return await axios.get(url)
+     return await axios.get(url, configCors)
         .then(response => {
 
             let data = response.data.result
