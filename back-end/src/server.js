@@ -9,7 +9,7 @@ const server = express();
 server.use(cors());
 server.use(bodyParser.urlencoded({extended: false}));
 server.use(express.static("/app/front-end/public"))
-server.set('view engine', 'ejs')
+server.set('view engine', 'js')
 server.set('views', '/app/front-end/views')
 
 server.use('/api',routes)
