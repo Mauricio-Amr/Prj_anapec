@@ -16,7 +16,7 @@ server.use('/api',routes)
 
 server.use('/', function(req, res, next){
     res.sendFile('./app/front-end/views/index.html')
-    
+    next()
 })
 
 server.listen(process.env.PORT, ()=>{
