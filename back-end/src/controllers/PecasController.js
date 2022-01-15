@@ -38,6 +38,8 @@ module.exports = {
     },
 
     inserir: async(req,res) =>{
+        res.header("Access-Control-Allow-Origin", "*");
+
 
         let json = { error:'', result:{}};
 
@@ -66,6 +68,7 @@ module.exports = {
     },
 
     alterar: async(req,res) =>{
+        res.header("Access-Control-Allow-Origin", "*");
 
         let json = { error:'', result:{}};
 
@@ -93,6 +96,8 @@ module.exports = {
     },
 
     excluir : async(req,res) => {
+        res.header("Access-Control-Allow-Origin", "*");
+
 
         let json = {erro:'', result:{}};
 
@@ -103,6 +108,7 @@ module.exports = {
     },
 
     verificar : async(req,res) => {
+        res.header("Access-Control-Allow-Origin", "*");
 
         let json = {error: '', result:{}};
         let codigo = req.params.codigo
@@ -180,6 +186,7 @@ module.exports = {
     },
 
     verificarPecasComp : async(req,res) => {
+        res.header("Access-Control-Allow-Origin", "*");
 
         let json = {error: '', result:{}};
         let codigo = req.params.codigo
