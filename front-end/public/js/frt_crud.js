@@ -1,6 +1,6 @@
 
 
-const url = "http://localhost:3000/api/pecas"
+const url = "https://anapec.herokuapp.com/api/pecas"
 
 const config = {}
 
@@ -55,7 +55,7 @@ async function getPecas(codigo) {
 
 
 
-    const url = `http://localhost:3000/api/pecas/${codigo}`
+    const url = `https://anapec.herokuapp.com/api/pecas/${codigo}`
 
     return await axios.get(url)
         .then(response => {
@@ -116,7 +116,7 @@ async function addPecas_ori() {
     itens.append('linha', `${linha_pc_ori}`)
 
     console.log(itens)
-    const url = `http://localhost:3000/api/pecas`
+    const url = `https://anapec.herokuapp.com/api/pecas`
 
 
     const verificado = await verifCad(`${codigo_pc_ori}`)
@@ -142,7 +142,7 @@ async function addPecas_ori() {
 
 
  async function verifCad(codigoDaPeca) {
-    const url = `http://localhost:3000/api/pecas/verificar/${codigoDaPeca}`
+    const url = `https://anapec.herokuapp.com/api/pecas/verificar/${codigoDaPeca}`
 
      return await axios.get(url)
         .then(response => {
@@ -200,7 +200,7 @@ async function inserirCompativel() {
     modelo_pc_comp = document.getElementById('fm-inp-modelo-comp').value
     observacao_pc_comp = document.getElementById('fm-inp-obsevacao-comp').value
 
-    const url = `http://localhost:3000/api/pecas/compativel`
+    const url = `https://anapec.herokuapp.com/api/pecas/compativel`
 
         const itensComp= new URLSearchParams()
         itensComp.append('codigo', `${codigo_pc_comp}`)
@@ -234,7 +234,7 @@ async function inserirCompatibilidade() {
         
         //enviar dados de compatibilidade
 
-        const url_compatibilidade = `http://localhost:3000/api/pecas/compatibilidade`
+        const url_compatibilidade = `https://anapec.herokuapp.com/api/pecas/compatibilidade`
 
         const itens_compatibilidade = new URLSearchParams()
         itens_compatibilidade.append('cod_pc_comp', `${codigo_pc_comp}`)
@@ -259,7 +259,7 @@ async function inserirCompatibilidade() {
 }
 
 async function verifCadCompativel(codigoDaPeca) {
-    const url = `http://localhost:3000/api/pecas/verificarcompativel/${codigoDaPeca}`
+    const url = `https://anapec.herokuapp.com/api/pecas/verificarcompativel/${codigoDaPeca}`
 
      return await axios.get(url)
         .then(response => {

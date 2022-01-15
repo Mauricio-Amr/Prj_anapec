@@ -8,8 +8,15 @@ const routes = require('./routes')
 const server = express();
 server.use(cors());
 server.use(bodyParser.urlencoded({extended: false}));
-server.use(express.static("/app/front-end/public"))
-server.set('view engine', 'js')
+
+//arquivos staticos
+server.use(express.static("front-end/public"))
+server.use('/css', express.static(__dirname +'public/css'))
+server.use('/img', express.static(__dirname +'public/img'))
+server.use('/js', express.static(__dirname +'public/js'))
+
+//templates
+server.set('view engine', 'jsx')
 server.set('views', '/app/front-end/views')
 
 server.use('/api',routes)
