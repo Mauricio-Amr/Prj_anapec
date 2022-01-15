@@ -15,8 +15,8 @@ server.set('views', '/app/front-end/views')
 server.use('/api',routes)
 
 server.use('/', function(req, res, next){
-    res.render('index')
-    next()
+    res.sendFile('./front-end/views/index.html')
+    
 })
 
 server.listen(process.env.PORT, ()=>{
