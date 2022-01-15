@@ -134,8 +134,9 @@ async function addPecas_ori() {
             method: "post",
             url: `${url}`,
             data: itens,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        })
+           headers: { 'Content-Type': 'application/x-www-form-urlencoded',
+           'Access-Control-Allow-Origin': '*' }
+            }   )
             .then(response => {
                 alert(response.status)
             })
@@ -216,7 +217,8 @@ async function inserirCompativel() {
             method: "post",
             url: `${url}`,
             data: itensComp,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded',
+            'Access-Control-Allow-Origin': '*', }
         })
             .then(response => {
                 alert(response.status)
@@ -249,7 +251,8 @@ async function inserirCompatibilidade() {
             method: "post",
             url: `${url_compatibilidade}`,
             data: itens_compatibilidade,
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded',
+            'Access-Control-Allow-Origin': '*', }
         })
             .then(response => {
                 alert(response.status)
@@ -264,7 +267,7 @@ async function inserirCompatibilidade() {
 async function verifCadCompativel(codigoDaPeca) {
     const url = `https://anapec.herokuapp.com/api/pecas/verificarcompativel/${codigoDaPeca}`
 
-     return await axios.get(url)
+     return await axios.get(url,configCors)
         .then(response => {
 
             let data = response.data.result
