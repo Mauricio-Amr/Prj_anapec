@@ -5,22 +5,28 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Search from  './Search'
-import Bpesq from '../Pecas/PecasCrud'
+import Table from 'react-bootstrap/Table'
+import Main from "./Main";
+
+
+const renderTable =()=>{
+  return 
+    <Main> 
+      <div>
+          <Container>
+              <Table />
+          </Container>
+      </div>
+    </Main>
+     
+ }
 
 
 
 
 export default props =>
 
-renderTable(){
-  return (
-      <div>
-          <Container>
-              <Table />
-          </Container>
-      </div>
-  );
-}
+
 
 <div className="menu">
 
