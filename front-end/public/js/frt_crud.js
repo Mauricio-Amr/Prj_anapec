@@ -1,21 +1,21 @@
 configCors =  {
 	headers: {
 	  'Access-Control-Allow-Origin': '*',
-	}}
+	}};
 
-const url = "https://anapec.herokuapp.com/api/pecas"
+const url = "https://anapec.herokuapp.com/api/pecas";
 
-const config = {}
+const config = {};
 
-const form = new FormData()
+const form = new FormData();
 
 
 function enviar() {
 
     const valor = document.getElementById('fm-pesq-imp').value
     if (document.getElementById('tab-res-pes')) {
-        document.getElementById('tab-res-pes').remove()
-        getPecas(valor)
+        document.getElementById('tab-res-pes').remove();
+        getPecas(valor);
     }
     else {
         getPecas(valor)
