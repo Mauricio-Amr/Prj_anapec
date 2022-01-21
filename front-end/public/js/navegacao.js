@@ -3,7 +3,7 @@
     function navegarViaAjax(hash) {
         if (!hash)return
 
-        const link = document.querySelector(`[anap-link = '${hash}']`)
+        const link = document.querySelector(`[anap-link='${hash}']`)
         if (!link) return
 
         const destino  = document.querySelector(`[anap-link-destino]`)
@@ -29,7 +29,7 @@
         if (location.hash){
             navegarViaAjax(location.hash)
         }else{
-            const primeiroLink =document.querySelector('[anap-link]')
+            const primeiroLink = document.querySelector('[anap-link]')
             navegarViaAjax(primeiroLink.hash)
         }
         
