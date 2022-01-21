@@ -2,28 +2,21 @@ require('dotenv').config({path:'variaveis.env'});
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require('path')
 
 const routes = require('./routes')
 
 const server = express();
 server.use(cors());
 server.use(bodyParser.urlencoded({extended: false}));
+server.use(express.static(path.join(__dirname, 'public')));
 
-//arquivos staticos
-server.use(express.static("front-end/public"))
-server.use('/css', express.static(__dirname +'public/css'))
-server.use('/img', express.static(__dirname +'public/img'))
-server.use('/js', express.static(__dirname +'public/js'))
-
-//templates
-server.set('view engine', 'jsx')
-server.set('views', '/app/front-end/views')
 
 server.use('/api',routes)
 
-server.use('/', function(req, res){
-    res.sendFile('/app/front-end/views/index.html')
-    
+server.set('view engine', 'ejs')
+server.get('/*' ,(req, res)=>{
+    res.render('index')
 })
 
 server.listen(process.env.PORT, ()=>{
