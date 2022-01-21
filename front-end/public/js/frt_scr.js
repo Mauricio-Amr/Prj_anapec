@@ -1,6 +1,6 @@
 
 document.querySelectorAll('a').forEach(link => {
-    const conteudo = document.getElementsByClassName('anap-link-destino')
+    const conteudo = document.getElementsByid('anap-link-destino')
 
     link.onclick = function(e){
         e.preventDefault()
