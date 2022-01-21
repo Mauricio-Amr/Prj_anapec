@@ -62,10 +62,7 @@ async function getPecas(codigo) {
 
     return await axios.get(url, configCors)
         .then(response => {
-
-
             let data = response.data.result
-
             console.log(data)
             //console.log(data[0].codigo)
 
