@@ -14,15 +14,9 @@ server.use(express.static(path.join(__dirname, 'public')));
 
 server.use('/api',routes)
 
-<<<<<<< HEAD
-server.use('/', function(req, res){
-    res.sendFile('/index.html')
-    
-=======
 server.set('view engine', 'ejs')
 server.get('/*' ,(req, res)=>{
     res.render('index')
->>>>>>> 75bdef8ef5534358c01744d9f1ec35c6e55f718e
 })
 
 server.listen(process.env.PORT, ()=>{
